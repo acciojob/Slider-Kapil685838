@@ -45,6 +45,7 @@ const data = [
 
 function App() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const { image, name, title, quote } = data[currentIndex];
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -61,14 +62,12 @@ function App() {
         setCurrentIndex((currentIndex - 1 + data.length) % data.length);
     };
 
-    const { image, name, title, quote } = data[currentIndex];
-
     return (
         <div className="App">
             <h1 id="review-heading">Reviews</h1>
             <div id="review-container">
-                <img src={image} alt={name} id={`person-${currentIndex}-image`} />
                 <h2 id={`person-${currentIndex}`}>{name}</h2>
+                <img src={image} alt={name} id={`person-${currentIndex}-image`} />
                 <h3>{title}</h3>
                 <p>{quote}</p>
                 <button className="prev" onClick={handlePrev}>
